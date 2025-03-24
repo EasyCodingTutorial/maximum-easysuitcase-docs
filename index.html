@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maximum Suitcase Documentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-typescript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .search-results {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            z-index: 50;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .search-results.active {
+            display: block;
+        }
+        .search-item {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            cursor: pointer;
+        }
+        .search-item:hover {
+            background-color: #f3f4f6;
+        }
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: none;
+            }
+            .mobile-menu.active {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm fixed w-full z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <a href="#" class="text-xl font-bold text-gray-900">Maximum Suitcase</a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#features" class="text-gray-600 hover:text-gray-900">Features</a>
+                    <a href="#tech-stack" class="text-gray-600 hover:text-gray-900">Tech Stack</a>
+                    <a href="#requirements" class="text-gray-600 hover:text-gray-900">Requirements</a>
+                    <a href="#download" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Download</a>
+                </div>
+
+                <!-- Search and Mobile Menu Button -->
+                <div class="flex items-center space-x-4">
+                    <!-- Search -->
+                    <div class="relative">
+                        <input type="text"
+                               id="searchInput"
+                               placeholder="Search..."
+                               class="w-64 px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <div id="searchResults" class="search-results"></div>
+                    </div>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="mobileMenuButton" class="md:hidden text-gray-600 hover:text-gray-900">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="mobile-menu md:hidden pb-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="#features" class="text-gray-600 hover:text-gray-900">Features</a>
+                    <a href="#tech-stack" class="text-gray-600 hover:text-gray-900">Tech Stack</a>
+                    <a href="#requirements" class="text-gray-600 hover:text-gray-900">Requirements</a>
+                    <a href="#download" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 text-center">Download</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-gradient-to-r from-gray-900 to-gray-800 text-white py-20 mt-16">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Maximum Suitcase</h1>
+            <p class="text-lg md:text-xl text-gray-300 mb-8">A Next.js 14 E-commerce Solution with 3D Visualization</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#download" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold">Download Source Code</a>
+                <a href="#features" class="border border-white hover:bg-white hover:text-gray-900 px-8 py-3 rounded-lg font-semibold">View Features</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Download Section -->
+    <section id="download" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-6">Download Source Code</h2>
+                <p class="text-gray-600 mb-8">Get started with our modern suitcase e-commerce template</p>
+                <div class="bg-gray-50 p-8 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-4">Complete source code with all features</h3>
+                    <a href="#" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold">Download Source Code</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Key Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Modern UI/UX -->
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="text-3xl mb-4">🎨</div>
+                    <h3 class="text-xl font-semibold mb-4">Modern UI/UX</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Responsive design for all devices</li>
+                        <li>• Smooth animations with Framer Motion</li>
+                        <li>• Clean and intuitive interface</li>
+                        <li>• Mobile-first approach</li>
+                    </ul>
+                </div>
+
+                <!-- E-commerce Features -->
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="text-3xl mb-4">🛍️</div>
+                    <h3 class="text-xl font-semibold mb-4">E-commerce Features</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Interactive 3D product visualization</li>
+                        <li>• Shopping cart functionality</li>
+                        <li>• Product categories</li>
+                        <li>• Search functionality</li>
+                    </ul>
+                </div>
+
+                <!-- Performance -->
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="text-3xl mb-4">⚡</div>
+                    <h3 class="text-xl font-semibold mb-4">Performance</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Server-side rendering</li>
+                        <li>• Optimized images</li>
+                        <li>• Fast page loads</li>
+                        <li>• SEO friendly</li>
+                    </ul>
+                </div>
+
+                <!-- Security -->
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="text-3xl mb-4">🔒</div>
+                    <h3 class="text-xl font-semibold mb-4">Security</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Secure payment integration</li>
+                        <li>• Data encryption</li>
+                        <li>• Authentication system</li>
+                        <li>• Protected routes</li>
+                    </ul>
+                </div>
+
+                <!-- User Experience -->
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="text-3xl mb-4">📱</div>
+                    <h3 class="text-xl font-semibold mb-4">User Experience</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Loading animations</li>
+                        <li>• Toast notifications</li>
+                        <li>• Intuitive navigation</li>
+                        <li>• Responsive feedback</li>
+                    </ul>
+                </div>
+
+                <!-- Marketing Tools -->
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="text-3xl mb-4">🎯</div>
+                    <h3 class="text-xl font-semibold mb-4">Marketing Tools</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Newsletter integration</li>
+                        <li>• Discount system</li>
+                        <li>• New user popup</li>
+                        <li>• Product recommendations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Technology Stack</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Frontend -->
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <h3 class="text-xl font-semibold mb-4">Frontend</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Next.js 14 (App Router)</li>
+                        <li>• React 18</li>
+                        <li>• TypeScript</li>
+                        <li>• Tailwind CSS</li>
+                        <li>• Framer Motion</li>
+                        <li>• Three.js</li>
+                        <li>• @react-three/fiber</li>
+                        <li>• @react-three/drei</li>
+                        <li>• Zustand (State Management)</li>
+                    </ul>
+                </div>
+
+                <!-- Development Tools -->
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <h3 class="text-xl font-semibold mb-4">Development Tools</h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• ESLint</li>
+                        <li>• Prettier</li>
+                        <li>• Git</li>
+                        <li>• npm/yarn</li>
+                        <li>• VS Code configuration</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Requirements Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-8">Project Requirements</h2>
+                <p class="text-gray-600 mb-8">What you need to get started</p>
+                <ul class="space-y-4 text-left">
+                    <li class="flex items-center">
+                        <span class="text-green-500 mr-2">✓</span>
+                        Node.js 14.x or higher
+                    </li>
+                    <li class="flex items-center">
+                        <span class="text-green-500 mr-2">✓</span>
+                        npm or yarn package manager
+                    </li>
+                    <li class="flex items-center">
+                        <span class="text-green-500 mr-2">✓</span>
+                        Git for version control
+                    </li>
+                    <li class="flex items-center">
+                        <span class="text-green-500 mr-2">✓</span>
+                        Basic knowledge of React and Next.js
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-8">Stay Updated</h2>
+                <p class="text-gray-600 mb-8">Subscribe to our newsletter for the latest updates and features</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <input type="email"
+                           placeholder="Enter your email"
+                           class="px-6 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 flex-1 max-w-md">
+                    <button class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 font-semibold">
+                        Subscribe
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="text-center md:text-left">
+                    <h3 class="text-xl font-bold mb-4">Maximum Suitcase</h3>
+                    <p class="text-gray-400">Premium travel gear for the modern explorer.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#features" class="text-gray-400 hover:text-white">Features</a></li>
+                        <li><a href="#tech-stack" class="text-gray-400 hover:text-white">Tech Stack</a></li>
+                        <li><a href="#requirements" class="text-gray-400 hover:text-white">Requirements</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Documentation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">GitHub</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-github"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2024 Maximum Suitcase. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        // Sample search data
+        const searchData = [
+            { title: 'Features', section: 'features' },
+            { title: 'Tech Stack', section: 'tech-stack' },
+            { title: 'Requirements', section: 'requirements' },
+            { title: 'Download', section: 'download' },
+            { title: '3D Visualization', section: '3d-visualization' },
+            { title: 'Shopping Cart', section: 'e-commerce' },
+            { title: 'User Authentication', section: 'security' }
+        ];
+
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            if (query.length < 2) {
+                searchResults.classList.remove('active');
+                return;
+            }
+
+            const results = searchData.filter(item =>
+                item.title.toLowerCase().includes(query)
+            );
+
+            if (results.length > 0) {
+                searchResults.innerHTML = results.map(result => `
+                    <div class="search-item" onclick="scrollToSection('${result.section}')">
+                        ${result.title}
+                    </div>
+                `).join('');
+                searchResults.classList.add('active');
+            } else {
+                searchResults.classList.remove('active');
+            }
+        });
+
+        // Close search results when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                searchResults.classList.remove('active');
+            }
+        });
+
+        // Mobile menu toggle
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Smooth scroll to section
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+                searchResults.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>
